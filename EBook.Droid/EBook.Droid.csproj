@@ -49,7 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainActivity.cs" />
+    <Compile Include="EBookReceiver.cs" />
+    <Compile Include="EBookService.cs" />
+    <Compile Include="EBookServiceBinder.cs" />
+    <Compile Include="EBookServiceConnection.cs" />
+    <Compile Include="IdHtml.cs" />
+    <Compile Include="TagActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -69,6 +74,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EBook.Model\EBook.Model.csproj">
+      <Project>{738b2092-b5bc-4535-9f7c-4c1a49a06d22}</Project>
+      <Name>EBook.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EBook.Service\EBook.Service.csproj">
+      <Project>{29969b19-bb2d-4fd7-8699-1eb40468144a}</Project>
+      <Name>EBook.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
