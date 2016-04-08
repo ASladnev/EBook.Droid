@@ -34,7 +34,7 @@ namespace EBook.Droid
     protected override void OnHandleIntent (Intent intent)
     {
       //CodeNumber = GetHTML ();
-      for (var i = 1; i <= 10; i++) {
+      for (var i = 1; i <= 1; i++) {
         var html = _eBookWebReader.GetHTML (i);
         while (IdHtml.isLock) {
           Thread.Sleep (50);

@@ -4,6 +4,7 @@ using Android.Content;
 using Android.OS;
 using Android.Widget;
 using System.Threading;
+using EBook.Model;
 
 namespace EBook.Droid
 {
@@ -79,7 +80,6 @@ namespace EBook.Droid
       IsBound = false;
     }
 
-
     public void GetEBook ()
     {
       if (!IsBound) return;
@@ -89,11 +89,25 @@ namespace EBook.Droid
         var IdHtml = service.IdHtml;
         while (IdHtml.isLock) Thread.Sleep (50);
         Console.WriteLine ($"№ фала {service.IdHtml.Id}");
+        Console.WriteLine ($"№ фала {service.IdHtml.Html}");
         IdHtml.isLock = true;
         var html = string.Copy (IdHtml.Html);
+        ParseHtml (IdHtml.Id, html);
         IdHtml.isLock = false;
       });
     }
+
+    private Book ParseHtml (int id, string html)
+    {
+      var Book = new Book {Id = id};
+
+      var search = "<h1 itemprop=\"name\">";
+      var pos = html.IndexOf (search);
+      var pos2 = html.IndexOf ("</h1>");
+      Book.Name = html.Substring (pos + search.Length, pos2 - pos - search.Length);
+      return Book;
+    }
+
 
   }
 }
